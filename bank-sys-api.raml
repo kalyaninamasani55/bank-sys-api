@@ -1,0 +1,75 @@
+#%RAML 1.0
+title: bank-sys-api
+version: v1
+
+/accounts:
+    /{id}:
+        get:
+            description: Get Account Details with Account ID
+            queryParameters:
+                ifscCode?: string
+                branch?: string
+            responses:
+                200:
+                    body:
+                        application/json:
+                            example:
+                                 {
+                                    accountNumber: 3232,
+                                    firstName: virat,
+                                    lastName: kohli,
+                                    dateOfBirth: 03-03-1987,
+                                    address: Hyderabad,
+                                    pincode: 500085,
+                                    mobileNumber: 09835979981
+                                    }
+
+
+    post:
+        description: Create a New Account
+        body:
+            application/json:
+                example:
+                     {
+                        accountNumber: 3232,
+                        firstName: virat,
+                        lastName: kohli,
+                        dateOfBirth: 03-03-1987,
+                        address: Hyderabad,
+                        pincode: 500085,
+                        mobileNumber: 09835979981
+                        }
+        responses:
+            201:
+                body:
+                    application/json:
+                        example:
+                             {
+                                message: Account Created Successfully,
+                                referenceNumber: 835893
+                                }
+
+    patch:
+        description: Update an existing account or create a new account
+        body:
+            application/json:
+                example:
+                     {
+                        accountNumber: 3232,
+                        firstName: virat,
+                        lastName: kohli5,
+                        dateOfBirth: 03-03-1987,
+                        address: Hyderabad,
+                        pincode: 500085,
+                        mobileNumber: 09835979981
+                        }
+        responses:
+            201:
+                body:
+                    application/json:
+                        example:
+                             {
+                                message: Account Updated Successfully,
+                                referenceNumber: 835893
+
+                                }
