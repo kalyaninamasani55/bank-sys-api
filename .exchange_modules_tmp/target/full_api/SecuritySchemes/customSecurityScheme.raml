@@ -1,0 +1,10 @@
+#%RAML 1.0 Security Scheme
+type: x-clientIDEnforcement
+
+describedBy: 
+    headers: 
+        client_id: 
+        client_secret:
+    responses:
+        400: 
+            description: "Unauthorized Access"

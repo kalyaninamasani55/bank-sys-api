@@ -1,76 +1,90 @@
 #%RAML 1.0
 title: bank-sys-api
 version: v1
+mediaType: 
+    - application/json
+    - application/xml
+protocols:
+    - HTTP
+    - HTTPS
 
+traits:
+    errorResponse: !include Traits/errorResponse.raml
+
+securitySchemes: 
+    security: !include SecuritySchemes/customSecurityScheme.raml
+    
+securedBy:
+    - security
 /accounts:
-    /{id}:
-        get:
-            description: Get Account Details with Account ID
-            queryParameters:
-                ifscCode?: string
-                branch?: string
-                accountNUmber?: string
-            responses:
-                200:
-                    body:
-                        application/json:
-                            example:
-                                 {
-                                    accountNumber: 3232,
-                                    firstName: virat,
-                                    lastName: kohli,
-                                    dateOfBirth: 03-03-1987,
-                                    address: Hyderabad,
-                                    pincode: 500085,
-                                    mobileNumber: 09835979981
-                                    }
-
+    is: 
+        - errorResponse
+    get:
+        description: Get Account Details with Account ID
+        queryParameters:
+            accountType:
+                enum:
+                    - Saving
+                    - Loan
+                    - Current
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: !include Examples/getaccountresponse.json
 
     post:
         description: Create a New Account
         body:
             application/json:
-                example:
-                     {
-                        accountNumber: 3232,
-                        firstName: virat,
-                        lastName: kohli,
-                        dateOfBirth: 03-03-1987,
-                        address: Hyderabad,
-                        pincode: 500085,
-                        mobileNumber: 09835979981
-                        }
+                example: !include Examples/postaccountrequest.json
         responses:
             201:
                 body:
                     application/json:
-                        example:
-                             {
-                                message: Account Created Successfully,
-                                referenceNumber: 835893
-                                }
+                        example: !include Examples/postaccountresponse.json
 
     patch:
         description: Update an existing account or create a new account
         body:
             application/json:
-                example:
-                     {
-                        accountNumber: 3232,
-                        firstName: virat,
-                        lastName: kohli5,
-                        dateOfBirth: 03-03-1987,
-                        address: Hyderabad,
-                        pincode: 500085,
-                        mobileNumber: 09835979981
-                        }
+                example: !include Examples/patchaccountrequest.json
         responses:
             201:
                 body:
                     application/json:
-                        example:
-                             {
-                                message: Account Updated Successfully,
-                                referenceNumber: 835893
+                        example: !include Examples/patchaccountresponse.json
 
-                             }
+/customers:
+    is: 
+        - errorResponse
+    get:
+        description:  Retrieve Customer Information with customerId
+        queryParameters:
+            city: string
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: !include Examples/getcustomerresponse.json
+
+    post:
+        body:
+            application/json:
+                example: !include Examples/postcustomerrequest.json
+        responses:
+            201:
+                body:
+                    application/json:
+                        example: !include Examples/postcustomerresponse.json
+    patch:
+        body:
+            application/json:
+                example: !include Examples/patchcustomerrequest.json
+ 
+        responses:
+            201:
+                body:
+                    application/json:
+                        example: !include Examples/patchcustomerresponse.json
+        

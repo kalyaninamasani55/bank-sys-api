@@ -1,0 +1,23 @@
+{
+    "firstName": "virat",
+    "LastName": "kohli",
+    "age": "35",
+    "address": {
+        "street": "3 Barking Wharf Square",
+        "pincode": "Ig11 7ZW",
+        "city": "London"
+    },
+    "phone": [
+
+        {
+            "phoneType": "mobile",
+            "phoneNumber": "09885387931"
+        },
+
+        {
+            "phoneType": "mobile",
+            "phoneNumber": "09885387931"
+        }
+    ]
+}
+
