@@ -1,0 +1,24 @@
+[
+
+    {
+        "accountNumber": "3232",
+        "accountId": "22",
+        "status": "Enabled",
+        "statusUpdatedDataTime": "2019-01-01T06::06::06+00::00",
+        "currency": "GBP",
+        "accountType": "Personal",
+        "accountSubType": "Current Account",
+        "nickName": "Bills"
+    },
+
+    {
+        "accountNumber": "3015",
+        "accountId": "80",
+        "status": "Enabled",
+        "statusUpdatedDataTime": "2021-01-05T06::06::06+00::00",
+        "currency": "GBP",
+        "accountType": "Joint",
+        "accountSubType": "Savings Account",
+        "nickName": "Loan"
+    }
+]
